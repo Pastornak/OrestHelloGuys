@@ -7,14 +7,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
-    String names[] = {"Bucket of hot nails", "Chicken", "Oliv`e"};
-    String details[] = {"2 ingredients", "3 ingredients", "5 ingredients"};
-    int images[] = {R.drawable.logo, R.drawable.logo2, R.drawable.logo3};
+    Recipe ITEM = new Recipe();
 
     class ViewHolder extends RecyclerView.ViewHolder{
 
@@ -39,17 +35,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i){
-        viewHolder.itemName.setText(names[i]);
-        viewHolder.itemDetail.setText(details[i]);
-        viewHolder.itemImage.setImageResource(images[i]);
+        viewHolder.itemName.setText(ITEM.getRecipies().get(i).getRecipeName());
+        viewHolder.itemDetail.setText(ITEM.getRecipies().get(i).getRecipeDetail());
+        viewHolder.itemImage.setImageResource(ITEM.getRecipies().get(i).getRecipePhoto());
     }
 
     @Override
     public int getItemCount(){
-        return names.length;
-    }
-
-    public String[] getNames(){
-        return names;
+        return ITEM.getRecipies().size();
     }
 }

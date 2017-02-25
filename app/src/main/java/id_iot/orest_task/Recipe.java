@@ -3,31 +3,37 @@ package id_iot.orest_task;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Володимир on 24.02.2017.
- */
-
 public class Recipe {
     String recipeName;
-    int recipeAge;
+    String recipeDetail;
     int recipePhoto;
     private ArrayList<Recipe> recipies = new ArrayList<>();
 
-    public Recipe(){}
-
-    public Recipe(String name, int age, int photo){
-        this.recipeName = name;
-        this.recipeAge = age;
-        this.recipePhoto = photo;
+    public Recipe(){
+        recipies.add(new Recipe("Bucket of hot nails", "2 ingredients", R.drawable.logo));
+        recipies.add(new Recipe("Chicken", "3 ingredients", R.drawable.logo2));
+        recipies.add(new Recipe("Beef", "5 ingredients", R.drawable.logo3));
     }
 
-    private void initializeRecipes(){
-        recipies.add(new Recipe("Bucket of hot nails", 1, R.drawable.logo));
-        recipies.add(new Recipe("Chicken", 500, R.drawable.logo));
-        recipies.add(new Recipe("Beef", 100, R.drawable.logo));
+    public Recipe(String name, String detail, int photo){
+        this.recipeName = name;
+        this.recipeDetail = detail;
+        this.recipePhoto = photo;
     }
 
     public ArrayList<Recipe> getRecipies(){
         return this.recipies;
+    }
+
+    public String getRecipeName(){
+        return this.recipeName;
+    }
+
+    public String getRecipeDetail(){
+        return this.recipeDetail;
+    }
+
+    public int getRecipePhoto(){
+        return this.recipePhoto;
     }
 }

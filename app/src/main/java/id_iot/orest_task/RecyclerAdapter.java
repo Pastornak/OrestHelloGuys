@@ -48,4 +48,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public int getItemCount(){
         return names.length;
     }
+
+    public String[] getNames(){
+        return names;
+    }
 }

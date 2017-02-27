@@ -15,7 +15,7 @@ public class Recipe {
         recipies.add(new Recipe("Beef", "5 ingredients", R.drawable.logo3));
     }
 
-    public Recipe(String name, String detail, int photo){
+    private Recipe(String name, String detail, int photo){
         this.recipeName = name;
         this.recipeDetail = detail;
         this.recipePhoto = photo;

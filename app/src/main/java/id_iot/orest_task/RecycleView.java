@@ -1,15 +1,19 @@
 package id_iot.orest_task;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class RecycleView extends AppCompatActivity {
+public class RecycleView extends Fragment {
 
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
@@ -18,19 +22,21 @@ public class RecycleView extends AppCompatActivity {
     Button buttonFind;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.recycler_view);
-        recyclerView = (RecyclerView) findViewById(R.id.rv);
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container,
+                             Bundle savedInstanceState){
+        View view = inflater.inflate(R.layout.recycler_view, container, false);
+        //getActivity().setTitle("Menu");
+        recyclerView = (RecyclerView) view.findViewById(R.id.rv);
 
-        layoutManager = new LinearLayoutManager(this);
+        layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
 
         final RecyclerAdapter adapter = new RecyclerAdapter();
         recyclerView.setAdapter(adapter);
 
-        findRecipe = (EditText) findViewById(R.id.editText2);
-        buttonFind = (Button) findViewById(R.id.button);
+        findRecipe = (EditText) view.findViewById(R.id.editText2);
+        buttonFind = (Button) view.findViewById(R.id.button);
         buttonFind.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -38,14 +44,15 @@ public class RecycleView extends AppCompatActivity {
                 boolean found = false;
                 for (Recipe recipe: adapter.ITEM.getRecipies()){
                     if (recipe.getRecipeName().equalsIgnoreCase(name)) {
-                        Toast.makeText(getBaseContext(), "Found", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Found", Toast.LENGTH_SHORT).show();
                         found = true;
                     }
                 }
 
                 if (found == false)
-                    Toast.makeText(getBaseContext(), "Didn`t found", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Didn`t found", Toast.LENGTH_SHORT).show();
             }
         });
+        return view;
     }
 }

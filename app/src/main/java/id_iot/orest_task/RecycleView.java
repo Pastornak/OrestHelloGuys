@@ -17,7 +17,6 @@ public class RecycleView extends Fragment {
 
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-    //RecyclerView.Adapter adapter;
     EditText findRecipe;
     Button buttonFind;
 
@@ -26,7 +25,7 @@ public class RecycleView extends Fragment {
                              ViewGroup container,
                              Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.recycler_view, container, false);
-        //getActivity().setTitle("Menu");
+        getActivity().setTitle("Menu");
         recyclerView = (RecyclerView) view.findViewById(R.id.rv);
 
         layoutManager = new LinearLayoutManager(getContext());

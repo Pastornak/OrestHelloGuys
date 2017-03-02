@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Recipe {
-    String recipeName;
-    String recipeDetail;
-    int recipePhoto;
+    private String recipeName;
+    private String recipeDetail;
+    private int recipePhoto;
     private ArrayList<Recipe> recipies = new ArrayList<>();
 
     public Recipe(){
-        recipies.add(new Recipe("Bucket of hot nails", "2 ingredients", R.drawable.logo));
-        recipies.add(new Recipe("Chicken", "3 ingredients", R.drawable.logo2));
-        recipies.add(new Recipe("Beef", "5 ingredients", R.drawable.logo3));
+        recipies.add(new Recipe("Bucket of hot nails", "2 ingredients", R.drawable.bucket_of_nails));
+        recipies.add(new Recipe("Chicken", "3 ingredients", R.drawable.chicken));
+        recipies.add(new Recipe("Beef", "5 ingredients", R.drawable.beef));
     }
 
     private Recipe(String name, String detail, int photo){

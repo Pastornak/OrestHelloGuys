@@ -11,14 +11,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.Toast;
 
 public class RecycleView extends Fragment {
 
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-    EditText findRecipe;
-    Button buttonFind;
+    Button changeList;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -26,6 +26,17 @@ public class RecycleView extends Fragment {
                              Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.recycler_view, container, false);
         getActivity().setTitle("Menu");
+
+        changeList = (Button) view.findViewById(R.id.change_list);
+        changeList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentActivity activity = getActivity();
+                MainActivity mainActivity = (MainActivity) activity;
+                mainActivity.showFragment(new GridViewFragment());
+            }
+        });
+
         recyclerView = (RecyclerView) view.findViewById(R.id.rv);
 
         layoutManager = new LinearLayoutManager(getContext());
@@ -33,25 +44,6 @@ public class RecycleView extends Fragment {
 
         final RecyclerAdapter adapter = new RecyclerAdapter();
         recyclerView.setAdapter(adapter);
-
-        findRecipe = (EditText) view.findViewById(R.id.editText2);
-        buttonFind = (Button) view.findViewById(R.id.button);
-        buttonFind.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String name = findRecipe.getText().toString();
-                boolean found = false;
-                for (Recipe recipe: adapter.ITEM.getRecipies()){
-                    if (recipe.getRecipeName().equalsIgnoreCase(name)) {
-                        Toast.makeText(getContext(), "Found", Toast.LENGTH_SHORT).show();
-                        found = true;
-                    }
-                }
-
-                if (found == false)
-                    Toast.makeText(getContext(), "Didn`t found", Toast.LENGTH_SHORT).show();
-            }
-        });
         return view;
     }
 }

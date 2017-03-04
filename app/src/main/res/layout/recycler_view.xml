@@ -6,12 +6,6 @@
     android:orientation="vertical"
     tools:context=".RecycleView">
 
-    <Button
-        android:text="Change List"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/change_list" />
-
     <android.support.v7.widget.RecyclerView
 
         android:id="@+id/rv"

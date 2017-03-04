@@ -18,7 +18,6 @@ public class RecycleView extends Fragment {
 
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-    Button changeList;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -26,16 +25,6 @@ public class RecycleView extends Fragment {
                              Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.recycler_view, container, false);
         getActivity().setTitle("Menu");
-
-        changeList = (Button) view.findViewById(R.id.change_list);
-        changeList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentActivity activity = getActivity();
-                MainActivity mainActivity = (MainActivity) activity;
-                mainActivity.showFragment(new GridViewFragment());
-            }
-        });
 
         recyclerView = (RecyclerView) view.findViewById(R.id.rv);
 

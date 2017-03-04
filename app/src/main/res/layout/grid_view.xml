@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GridView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/gridview"
-    android:background="@color/colorRed"
+    android:background="@color/colorWhite"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:numColumns="2"
@@ -9,5 +9,4 @@
     android:horizontalSpacing="8dp"
     android:stretchMode="columnWidth"
     android:gravity="center"
-    android:listSelector="@color/colorWhite"
     />

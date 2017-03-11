@@ -1,6 +1,7 @@
 package id_iot.orest_task;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +19,7 @@ public class RecycleView extends Fragment {
 
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
+    FloatingActionButton changeToGrid;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -33,6 +35,16 @@ public class RecycleView extends Fragment {
 
         final RecyclerAdapter adapter = new RecyclerAdapter();
         recyclerView.setAdapter(adapter);
+
+        changeToGrid = (FloatingActionButton) view.findViewById(R.id.changeToGrid);
+        changeToGrid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentActivity activity = getActivity();
+                MainActivity mainActivity = (MainActivity) activity;
+                mainActivity.showFragment(new GridViewFragment());
+            }
+        });
         return view;
     }
 }

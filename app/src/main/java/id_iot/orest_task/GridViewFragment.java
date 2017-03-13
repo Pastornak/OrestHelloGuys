@@ -1,7 +1,6 @@
 package id_iot.orest_task;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
@@ -15,7 +14,7 @@ import android.widget.Toast;
 public class GridViewFragment extends Fragment {
 
     GridView gridView;
-    FloatingActionButton changeToCard;
+    Button changeToCard;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -23,6 +22,16 @@ public class GridViewFragment extends Fragment {
                              Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.grid_view, container, false);
         getActivity().setTitle("Menu");
+
+        changeToCard = (Button) view.findViewById(R.id.changeToCard);
+        changeToCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentActivity activity = getActivity();
+                MainActivity mainActivity = (MainActivity) activity;
+                mainActivity.showFragment(new RecyclerViewFragment());
+            }
+        });
 
         gridView = (GridView) view.findViewById(R.id.gridview);
         final GridViewAdapter gridViewAdapter = new GridViewAdapter(getContext());
@@ -35,15 +44,6 @@ public class GridViewFragment extends Fragment {
             }
         });
 
-        changeToCard = (FloatingActionButton) view.findViewById(R.id.changeToCard);
-        changeToCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentActivity activity = getActivity();
-                MainActivity mainActivity = (MainActivity) activity;
-                mainActivity.showFragment(new RecycleView());
-            }
-        });
         return view;
     }
 }

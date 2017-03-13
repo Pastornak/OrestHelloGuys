@@ -1,6 +1,7 @@
 package id_iot.orest_task;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
@@ -14,7 +15,7 @@ import android.widget.Toast;
 public class GridViewFragment extends Fragment {
 
     GridView gridView;
-    Button changeToCard;
+    FloatingActionButton changeToCard;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -23,7 +24,7 @@ public class GridViewFragment extends Fragment {
         View view = inflater.inflate(R.layout.grid_view, container, false);
         getActivity().setTitle("Menu");
 
-        changeToCard = (Button) view.findViewById(R.id.changeToCard);
+        changeToCard = (FloatingActionButton) view.findViewById(R.id.changeToCard);
         changeToCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

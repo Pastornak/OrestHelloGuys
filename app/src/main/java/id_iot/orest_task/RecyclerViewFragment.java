@@ -20,7 +20,7 @@ public class RecyclerViewFragment extends Fragment{
 
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-    Button changeToGrid;
+    FloatingActionButton changeToGrid;
     SearchView searchRecipe;
     RecyclerAdapter recyclerAdapter;
 
@@ -31,7 +31,7 @@ public class RecyclerViewFragment extends Fragment{
         View view = inflater.inflate(R.layout.recycler_view, container, false);
         getActivity().setTitle("Menu");
 
-        changeToGrid = (Button) view.findViewById(R.id.changeToGrid);
+        changeToGrid = (FloatingActionButton) view.findViewById(R.id.changeToGrid);
         changeToGrid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

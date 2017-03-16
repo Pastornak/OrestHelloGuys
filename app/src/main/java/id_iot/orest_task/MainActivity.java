@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_view);
-        showFragment(new RecyclerViewFragment());
+        showFragment(new GridViewFragment());
     }
 
     public void showFragment(Fragment fragment) {

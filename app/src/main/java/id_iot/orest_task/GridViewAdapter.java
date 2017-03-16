@@ -14,6 +14,7 @@ public class GridViewAdapter extends BaseAdapter {
 
     private Context mContext;
     private final ArrayList<Recipe> recipes;
+    ImageView favoriteStar;
 
     public GridViewAdapter(Context c) {
         mContext = c;
@@ -42,8 +43,12 @@ public class GridViewAdapter extends BaseAdapter {
         convertView = layoutInflater.inflate(R.layout.grid_view_cell, null);
 
         ImageView recipePhoto = (ImageView) convertView.findViewById(R.id.grid_image);
+        favoriteStar = (ImageView) convertView.findViewById(R.id.grid_favorite);
         TextView recipeName = (TextView) convertView.findViewById(R.id.grid_name);
+        TextView recipeDetail = (TextView) convertView.findViewById(R.id.grid_detail);
         recipeName.setText(recipes.get(position).getRecipeName());
+        recipeDetail.setText(recipes.get(position).getRecipeDetail());
+        favoriteStar.setImageResource(recipes.get(position).getFavorite()? R.drawable.logo3: R.drawable.logo);
         recipePhoto.setImageResource(recipes.get(position).getRecipePhoto());
         return convertView;
     }

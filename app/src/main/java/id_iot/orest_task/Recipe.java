@@ -8,6 +8,7 @@ public class Recipe {
     private String recipeDetail;
     private int recipePhoto;
     private ArrayList<Recipe> recipies = new ArrayList<>();
+    private boolean favorite = false;
 
     public Recipe(){
         recipies.add(new Recipe("Bucket of hot nails", "2 ingredients", R.drawable.bucket_of_nails));
@@ -35,5 +36,18 @@ public class Recipe {
 
     public int getRecipePhoto(){
         return this.recipePhoto;
+    }
+
+    public boolean getFavorite(){
+        return this.favorite;
+    }
+
+    public void toogleFavorite(){
+        if (this.favorite == false) {
+            this.favorite = true;
+        }
+        else{
+            this.favorite = false;
+        }
     }
 }

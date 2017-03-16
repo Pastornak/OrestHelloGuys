@@ -42,6 +42,8 @@ public class GridViewFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(view.getContext(),  gridViewAdapter.getRecipes().get(i).getRecipeName(), Toast.LENGTH_SHORT).show();
+                gridViewAdapter.getRecipes().get(i).toogleFavorite();
+                gridViewAdapter.notifyDataSetChanged();
             }
         });
 

@@ -16,7 +16,7 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
-public class RecyclerViewFragment extends Fragment{
+public class RecyclerViewFragment extends Fragment implements SearchView.OnQueryTextListener{
 
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
@@ -50,7 +50,21 @@ public class RecyclerViewFragment extends Fragment{
         recyclerView.setAdapter(recyclerAdapter);
 
         searchRecipe = (SearchView) view.findViewById(R.id.searchRecipe);
+        searchRecipe.setOnQueryTextListener(this);
 
         return view;
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        String text = newText;
+        recyclerAdapter.filter(text);
+        return false;
     }
 }

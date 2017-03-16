@@ -11,11 +11,13 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
     Recipe ITEM = new Recipe();
+    ArrayList<Recipe> recipes = ITEM.getRecipies();
 
     class ViewHolder extends RecyclerView.ViewHolder{
 
@@ -42,13 +44,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(final ViewHolder viewHolder, int i){
-        viewHolder.itemName.setText(ITEM.getRecipies().get(i).getRecipeName());
-        viewHolder.itemDetail.setText(ITEM.getRecipies().get(i).getRecipeDetail());
-        viewHolder.itemImage.setImageResource(ITEM.getRecipies().get(i).getRecipePhoto());
+        viewHolder.itemName.setText(recipes.get(i).getRecipeName());
+        viewHolder.itemDetail.setText(recipes.get(i).getRecipeDetail());
+        viewHolder.itemImage.setImageResource(recipes.get(i).getRecipePhoto());
         viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(), ITEM.getRecipies().get(viewHolder.getAdapterPosition()).getRecipeName(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(view.getContext(), recipes.get(viewHolder.getAdapterPosition()).getRecipeName(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -58,4 +60,19 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         return ITEM.getRecipies().size();
     }
 
+
+    public void filter(String recipeName) {
+        recipeName = recipeName.toLowerCase(Locale.getDefault());
+        recipes.clear();
+        if (recipeName.length() == 0) {
+            recipes.addAll(ITEM.getRecipies());
+        } else {
+            for (Recipe recipeIterator : ITEM.getRecipies()) {
+                if (recipeIterator.getRecipeName().toLowerCase(Locale.getDefault()).contains(recipeName)) {
+                    recipes.add(recipeIterator);
+                }
+            }
+        }
+        notifyDataSetChanged();
+    }
 }

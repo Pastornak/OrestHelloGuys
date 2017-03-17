@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -20,7 +21,8 @@ public class RecyclerViewFragment extends Fragment implements SearchView.OnQuery
 
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-    FloatingActionButton changeToGrid;
+    //FloatingActionButton changeToGrid;
+    ImageButton changeToGrid;
     SearchView searchRecipe;
     RecyclerAdapter recyclerAdapter;
 
@@ -31,7 +33,7 @@ public class RecyclerViewFragment extends Fragment implements SearchView.OnQuery
         View view = inflater.inflate(R.layout.recycler_view, container, false);
         getActivity().setTitle("Menu");
 
-        changeToGrid = (FloatingActionButton) view.findViewById(R.id.changeToGrid);
+        changeToGrid = (ImageButton) view.findViewById(R.id.changeToGrid);
         changeToGrid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,7 +48,10 @@ public class RecyclerViewFragment extends Fragment implements SearchView.OnQuery
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
 
-        recyclerAdapter= new RecyclerAdapter();
+        FragmentActivity activity = getActivity();
+        MainActivity mainActivity = (MainActivity) activity;
+
+        recyclerAdapter= new RecyclerAdapter(mainActivity.getRecipe());
         recyclerView.setAdapter(recyclerAdapter);
 
         searchRecipe = (SearchView) view.findViewById(R.id.searchRecipe);

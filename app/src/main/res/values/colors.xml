@@ -8,4 +8,5 @@
     <color name="colorTransparentBlack">#80000000</color>
     <color name="colorFadingGray">#33888888</color>
     <color name="colorGreenBackground">#64DD17</color>
+    <color name="colorFullTransparent">#00000000</color>
 </resources>

@@ -1,5 +1,6 @@
 package id_iot.orest_task;
 
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,8 +17,13 @@ import java.util.Locale;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
-    Recipe ITEM = new Recipe();
-    ArrayList<Recipe> recipes = ITEM.getRecipies();
+    Recipe ITEM;
+    ArrayList<Recipe> recipes;
+
+    public RecyclerAdapter(Recipe recipe){
+        ITEM = recipe;
+        recipes = ITEM.getRecipies();
+    }
 
     class ViewHolder extends RecyclerView.ViewHolder{
 

@@ -15,12 +15,14 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class GridViewFragment extends Fragment implements SearchView.OnQueryTextListener {
 
     GridView gridView;
-    FloatingActionButton changeToCard;
+    //FloatingActionButton changeToCard;
+    ImageButton changeToCard;
     SearchView findRecipe;
     GridViewAdapter gridViewAdapter;
 
@@ -31,7 +33,7 @@ public class GridViewFragment extends Fragment implements SearchView.OnQueryText
         View view = inflater.inflate(R.layout.grid_view, container, false);
         getActivity().setTitle("Menu");
 
-        changeToCard = (FloatingActionButton) view.findViewById(R.id.changeToCard);
+        changeToCard = (ImageButton) view.findViewById(R.id.changeToCard);
         changeToCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,7 +44,11 @@ public class GridViewFragment extends Fragment implements SearchView.OnQueryText
         });
 
         gridView = (GridView) view.findViewById(R.id.gridview);
-        gridViewAdapter = new GridViewAdapter(getContext());
+
+        FragmentActivity activity = getActivity();
+        MainActivity mainActivity = (MainActivity) activity;
+
+        gridViewAdapter = new GridViewAdapter(getContext(), mainActivity.getRecipe());
         gridView.setAdapter( gridViewAdapter);
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

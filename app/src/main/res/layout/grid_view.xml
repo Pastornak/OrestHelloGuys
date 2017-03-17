@@ -15,13 +15,15 @@
             android:iconifiedByDefault="false"
             android:queryHint="Search Recipe"
             android:layout_weight="25"/>
-        <android.support.design.widget.FloatingActionButton
-            android:layout_width="wrap_content"
+        <ImageButton
+            android:layout_width="40dp"
             android:layout_height="match_parent"
+            android:padding="4dp"
+            android:layout_margin="4dp"
             android:id="@+id/changeToCard"
-            android:layout_weight="1"
+            android:src="@drawable/tocard"
             android:scaleType="centerCrop"
-            android:src="@drawable/tocard"/>
+            android:background="@color/colorWhite"/>
     </LinearLayout>
 
     <GridView

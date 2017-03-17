@@ -15,6 +15,7 @@ import android.view.MenuInflater;
 public class MainActivity extends AppCompatActivity {
 
     private Fragment currentFragment;
+    private Recipe recipe = new Recipe();
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -31,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.container, fragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+    }
+
+    public Recipe getRecipe(){
+        return recipe;
     }
 }
 

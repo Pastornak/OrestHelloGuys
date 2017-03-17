@@ -20,9 +20,9 @@ public class GridViewAdapter extends BaseAdapter {
     private final ArrayList<Recipe> recipes;
     ImageView favoriteStar;
 
-    public GridViewAdapter(Context c) {
+    public GridViewAdapter(Context c, Recipe r) {
         mContext = c;
-        recipe = new Recipe();
+        recipe = r;
         recipes = recipe.getRecipies();
     }
 
